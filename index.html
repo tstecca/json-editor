@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <title>JSON Editor Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/@json-editor/json-editor@latest/dist/jsoneditor.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1>Editor Test</h1>
+      <div class="card mb-4">
+        <div class="card-body">
+          <div>Start Loading: <span id="start"></span></div>
+          <div>Finished Loading: <span id="finish"></span></div>
+          <div>Elapsed: <span id="elapsed"></span></div>
+      </div>
+      </div>
+      <div class="card">
+        <div id="editor" class="card-body">
+          <h4 class="mb-2">Editor</h4>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    async function startEditor(){
+      const start = new Date().getTime()
+      let finish = null
+
+      document.getElementById('start').innerHTML = `${start} milliseconds`
+
+      const {data:schema} = await axios.get('./schemas/quiz-schema.json')
+      console.log('Retrieved schema',schema)
+
+      const {data:startval} = await axios.get('./data/quiz-data.json')
+      console.log('Retrieved startval', startval)
+
+      const myEditor = new JSONEditor(document.getElementById('editor'), {
+          schema: schema, //
+          ajax: true,
+          startval: startval,
+          theme: 'bootstrap3',
+          iconlib: 'fontawesome4'
+      })
+
+      myEditor.on('ready', () => {
+        finish = new Date().getTime()
+        document.getElementById('finish').innerHTML = `${finish} milliseconds`
+        document.getElementById('elapsed').innerHTML = `${finish - start} milliseconds`
+      })
+    }
+
+
+    startEditor()
+  </script>
+</html>

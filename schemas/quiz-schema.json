@@ -1,0 +1,141 @@
+{
+  "type": "object",
+  "title": "VHS Quiz",
+  "description": "The quiz allows a maximum of 13 slides, with a maximum of 10 objects per slide.",
+  "properties": {
+    "config": {
+      "type": "object",
+      "title": "Settings",
+      "options": {
+        "disable_properties": true,
+        "disable_edit_json": true
+      },
+      "properties": {
+        "fileNameStub": {
+          "type": "string",
+          "default": "quiz",
+          "options": {
+            "hidden": true
+          }
+        },
+        "version": {
+          "type": "string",
+          "default": 1,
+          "options": {
+            "hidden": true
+          }
+        },
+        "quizTitle": {
+          "type": "string",
+          "title": "Quiz Title",
+          "description": "Enter the title of your quiz."
+        },
+        "preventPreviousSlide": {
+          "type": "boolean",
+          "format": "checkbox",
+          "title": "Prevent Navigation to Previous Slide",
+          "default": false,
+          "description": "Prevent the use of the previous slide button in the quiz navigation."
+        }
+      },
+      "required": [
+        "fileNameStub",
+        "version",
+        "quizTitle"
+      ]
+    },
+    "body": {
+      "type": "array",
+      "title": "Quiz Body",
+      "format": "tabs",
+      "minItems": 1,
+      "maxItems": 13,
+      "items": {
+        "type": "array",
+        "title": "Slide",
+        "minItems": 1,
+        "maxItems": 10,
+        "items": {
+          "type": "object",
+          "title": "Question Type",
+          "description": "Select the question type.",
+          "minItems": 1,
+          "options": {
+            "disable_properties": true,
+            "disable_edit_json": true
+          },
+          "anyOf": [
+            {
+              "title": "Audio",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/audio.json"
+            },
+            {
+              "title": "Bin Sorter",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/bin_sorter.json"
+            },
+            {
+              "title": "Concentration",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/concentration.json"
+            },
+            {
+              "title": "Fill in the Blanks",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/fill_blanks.json"
+            },
+            {
+              "title": "Flash Cards",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/flash_cards.json"
+            },
+            {
+              "title": "Hotspot",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/hotspot.json"
+            },
+            {
+              "title": "Image",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/image.json"
+            },
+            {
+              "title": "Input Validation",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/input_validation.json"
+            },
+            {
+              "title": "Layout",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/layout.json"
+            },
+            {
+              "title": "Matching",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/matching.json"
+            },
+            {
+              "title": "Multiple Choice",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/multiple_choice.json"
+            },
+            {
+              "title": "Multiple Select",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/multiple_select.json"
+            },
+            {
+              "title": "Paragraph",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/paragraph.json"
+            },
+            {
+              "title": "Sequence",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/sequence.json"
+            },
+            {
+              "title": "Table",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/table.json"
+            },
+            {
+              "title": "True or False",
+              "$ref": "https://web-assets-3-vhs.s3-us-west-2.amazonaws.com/beta/schemas/vue/true_false.json"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "config",
+    "body"
+  ]
+}
