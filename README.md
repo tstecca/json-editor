@@ -23,5 +23,8 @@ All the markup and logic for this simple test is provided in the index.html file
 #### Impact
 This slow performance with the console open slows developers down when they have the console open.
 
+#### Hopeful Resolution
+* Opening the console would not affect the speed at which the editor performs.
+* The `-->` logs would not show up.
 
 
