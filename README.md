@@ -1,6 +1,6 @@
 ## json-editor
 
-This repo test a bug where the JSON Editor slows down when the Google Chrome developer tools panel is open. In particular, the edit slows down when seeding the editor with a start value.  For comparision, this slow-down doesn't existin in Firefox when the dev tools are open, or at least it's not perceptible.
+This repo tests a bug where the JSON Editor (https://github.com/json-editor/json-editor) slows down when the Google Chrome developer tools panel is open. In particular, the editor slows down when seeding the editor with a start value.  For comparision, this slow-down doesn't exist in Firefox when the dev tools are open, or at least it's not perceptible.
 
 #### Startup
 
